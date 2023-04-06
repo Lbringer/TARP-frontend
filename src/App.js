@@ -1,24 +1,32 @@
-import logo from './logo.svg';
-import './App.css';
+import Home from './home';
+import Footer from "./footer";
+import Logo from "./logo";
+import Review from "./review";
+import Catalog from "./catalog";
+
 
 function App() {
+  let Comp;
+  switch (window.location.pathname) {
+    case '/':
+      Comp = Home;
+      break;
+    case '/review':
+      Comp = Review;
+      break;
+    case '/more':
+      Comp = Catalog;
+      break;
+    default:
+      break;
+  }
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <Logo></Logo>
+      <Comp></Comp>
+      <Footer></Footer>
+    </>
   );
 }
 
