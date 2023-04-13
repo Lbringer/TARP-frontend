@@ -1,13 +1,14 @@
-import ReactWordcloud from 'react-wordcloud';
-
-
-
 function ReviewCard(props) {
     const queryString = window.location.search;
     const urlParams = new URLSearchParams(queryString);
     const pdName = urlParams.get('pdName');
     const rating = Math.round(props.obj.averageRating * 10) / 10;
-    const words = props.obj.keywords.splice(1, 10);
+    const words = props.obj.keywords.slice(0, 25);
+    const options = {
+        rotations: 2,
+        rotationAngles: [-90, 0],
+    };
+    const size = [600, 100];
 
     let classRating;
     let classText;
@@ -36,7 +37,6 @@ function ReviewCard(props) {
                 <div className="data">
                     <div className="label">Main keywords</div>
                     <div className="text">{words.map(el => <span className='marginRight'>{el.text}</span>)}</div>
-                    {/* <div className="text"><ReactWordcloud words={words} /></div> */}
                 </div>
                 <div className="data">
                     <div className="label">Reviews Found</div>
